@@ -13,32 +13,59 @@ void printStrings(MATRIX_STRINGS matrix)
 {
     for (int i = 0; i < matrix.size; i++)
     {
-        printf("%s", matrix.strings[1]);
+        printf("%s\n", matrix.strings[i]);
     }
 }
 
-void insertStrings(MATRIX_STRINGS matrix)
+void insertStrings(MATRIX_STRINGS *matrix)
 {
     char buffer[200];
     int index = 0;
     char ch;
+    int stringCount = 0;
 
-    while ((ch = getchar()) != '.')
+    matrix->strings = NULL;
+    matrix-> size = 0;
+
+    while (1)
     {
-        if (index < 199)
+        ch = getchar();
+        if (ch == '.' || ch == '\n')
         {
-            buffer[index++] = ch;
+            if (index > 0)
+            {
+                buffer[index] = '\0';
+                matrix->strings = realloc(matrix->strings, sizeof(char *) * (stringCount + 1));
+                matrix->strings[stringCount] = strdup(buffer);
+                stringCount++;
+                index = 0;
+            }
+            if (ch == '.')
+            {
+                break;
+            }
+        }
+        else
+        {
+            if (index < 199)
+            {
+                buffer[index++] = ch;
+            }
         }
     }
-    buffer[index] = '\0';
 
-    matrix->strings = malloc(sizeof(char *));
-    matrix->strings[0] = strdup(buffer);
-    matrix->size = 1;
+    matrix->size = stringCount;
 }
 
 int main()
 {
-    printf("Hello, World!\n");
+    //printf("Hello, World!\n");
+    MATRIX_STRINGS matrix;
+
+    insertStrings(&matrix);
+    printStrings(matrix);
+
+    free(matrix.strings);
+
     return 0;
 }

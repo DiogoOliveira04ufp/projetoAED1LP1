@@ -22,10 +22,13 @@ typedef struct llMatrices {
     NODE_MATRIX *lastMatrix;
 } LL_MATRICES;
 
-typedef struct adllMatrices{} AD_LL_MATRICES;
+typedef struct adllMatrices {
+    int size;
+    LL_MATRICES *lists; //= malloc(sizeof(LL_MATRICES) * size);
+} AD_LL_MATRICES;
 
 char resizeStringArray(char *string, int resize);
 void printStrings(MATRIX_STRINGS matrix);
-void insertStrings(MATRIX_STRINGS matrix);
+void insertStrings(MATRIX_STRINGS *matrix);
 
 #endif //DECL_H
