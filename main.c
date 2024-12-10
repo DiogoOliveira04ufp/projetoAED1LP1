@@ -19,24 +19,24 @@ void printStrings(MATRIX_STRINGS matrix)
 
 void insertStrings(MATRIX_STRINGS *matrix)
 {
-    char buffer[200];
-    int index = 0;
-    char ch;
-    int stringCount = 0;
+    char buffer[200];                   //lista de strings
+    int index = 0;                      //index na lista
+    char ch;                            //caratere na string
+    int stringCount = 0;                //contagem de strings -- vai passar a ser o tamanho do array
 
     matrix->strings = NULL;
-    matrix-> size = 0;
+    matrix->size = 0;
 
     while (1)
     {
-        ch = getchar();
-        if (ch == '.' || ch == '\n')
+        ch = getchar();                          //inserir as strings
+        if (ch == '.' || ch == '\n')             //enquanto nao for '.' (condicao final)
         {
             if (index > 0)
             {
-                buffer[index] = '\0';
-                matrix->strings = realloc(matrix->strings, sizeof(char *) * (stringCount + 1));
-                matrix->strings[stringCount] = strdup(buffer);
+                buffer[index] = '\0';                                                                           //finaliza o array
+                matrix->strings = realloc(matrix->strings, sizeof(char *) * (stringCount + 1));         //abre espaco para as strings
+                matrix->strings[stringCount] = strdup(buffer);                                                  //insere as strings no array na matriz
                 stringCount++;
                 index = 0;
             }
@@ -45,16 +45,16 @@ void insertStrings(MATRIX_STRINGS *matrix)
                 break;
             }
         }
-        else
+        else                                      //condicao para inserir as strings
         {
             if (index < 199)
             {
-                buffer[index++] = ch;
+                buffer[index++] = ch;             //cada letra sera inserida na string buffer
             }
         }
     }
 
-    matrix->size = stringCount;
+    matrix->size = stringCount;                   //tamanho do array inserido no parametro size
 }
 
 int main()
