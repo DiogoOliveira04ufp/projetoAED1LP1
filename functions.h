@@ -30,5 +30,7 @@ typedef struct adllMatrices {
 char resizeStringArray(char *string, int resize);
 void printStrings(MATRIX_STRINGS matrix);
 void insertStrings(MATRIX_STRINGS *matrix);
+void removeStrings(MATRIX_STRINGS matrix, int index);
+void insertStringIntoMatrix(MATRIX_STRINGS *matrix, char str[]);
 
 #endif //DECL_H

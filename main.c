@@ -1,71 +1,32 @@
-#include "main.h"
-
-char resizeStringArray(char *string, int resize)
-{
-    char *newString = realloc(string, resize);
-
-    newString = string;
-
-    return newString;
-}
-
-void printStrings(MATRIX_STRINGS matrix)
-{
-    for (int i = 0; i < matrix.size; i++)
-    {
-        printf("%s\n", matrix.strings[i]);
-    }
-}
-
-void insertStrings(MATRIX_STRINGS *matrix)
-{
-    char buffer[200];                   //lista de strings
-    int index = 0;                      //index na lista
-    char ch;                            //caratere na string
-    int stringCount = 0;                //contagem de strings -- vai passar a ser o tamanho do array
-
-    matrix->strings = NULL;
-    matrix->size = 0;
-
-    while (1)
-    {
-        ch = getchar();                          //inserir as strings
-        if (ch == '.' || ch == '\n')             //enquanto nao for '.' (condicao final)
-        {
-            if (index > 0)
-            {
-                buffer[index] = '\0';                                                                           //finaliza o array
-                matrix->strings = realloc(matrix->strings, sizeof(char *) * (stringCount + 1));         //abre espaco para as strings
-                matrix->strings[stringCount] = strdup(buffer);                                                  //insere as strings no array na matriz
-                stringCount++;
-                index = 0;
-            }
-            if (ch == '.')
-            {
-                break;
-            }
-        }
-        else                                      //condicao para inserir as strings
-        {
-            if (index < 199)
-            {
-                buffer[index++] = ch;             //cada letra sera inserida na string buffer
-            }
-        }
-    }
-
-    matrix->size = stringCount;                   //tamanho do array inserido no parametro size
-}
+#include <stdio.h>
+#include "functions.h"
 
 int main()
 {
     //printf("Hello, World!\n");
     MATRIX_STRINGS matrix;
+    int size = 5;
+    char nstring[] = "ar";
+    char **conjunto = malloc(sizeof(char *) * 5);
+    conjunto[0] = "claro";
+    conjunto[1] = "aro";
+    conjunto[2] = "faro";
+    conjunto[3] = "pifaro";
+    conjunto[4] = "pifa";
 
-    insertStrings(&matrix);
+
+
+    matrix.strings = conjunto;
+    matrix.size = size;
+
     printStrings(matrix);
 
-    free(matrix.strings);
+    insertStringIntoMatrix(&matrix, nstring);
+    printStrings(matrix);
+    //printf("%d", matrix.size);
+
+    //free(conjunto);
+    //free(matrix.strings);
 
     return 0;
 }
