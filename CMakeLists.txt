@@ -5,4 +5,6 @@ set(CMAKE_C_STANDARD 17)
 
 add_executable(untitled main.c
         functions.h
-        functions.c)
+        functions.c
+        lsd.c
+        lsd.h)

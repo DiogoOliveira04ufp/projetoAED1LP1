@@ -1,8 +1,5 @@
 # ninja log v6
-14	238	7562461383340852	CMakeFiles/untitled.dir/main.c.obj	2314ec7d9f6c1ef2
-622	1224	7562465206075574	untitled.exe	e8e46d558bd8adc9
-33	620	7562465200191042	CMakeFiles/untitled.dir/functions.c.obj	a9412ebd648895b3
-6	686	7563382092325198	build.ninja	724481da2589e2e7
-14	300	7563382093213011	CMakeFiles/untitled.dir/functions.c.obj	a9412ebd648895b3
 5	303	7563382093119568	CMakeFiles/untitled.dir/main.c.obj	2314ec7d9f6c1ef2
 304	604	7563382096108425	untitled.exe	e8e46d558bd8adc9
+14	300	7563382093213011	CMakeFiles/untitled.dir/functions.c.obj	a9412ebd648895b3
+6	686	7565074626600859	build.ninja	724481da2589e2e7
