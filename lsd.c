@@ -55,6 +55,17 @@ void createStringElementsArray(StringElementsArray *si, int N)
     return;
 }
 
+void createStringElementsArrayAndFill(StringElementsArray *strArray, int N, char **strings)
+{
+    strArray->N = N;
+    strArray->str = (char **)malloc(sizeof(char *) * N);
+    strArray->len = (int *)malloc(sizeof(int) * N);
+    for (int i = 0; i < N; i++) {
+        strArray->str[i] = strdup(strings[i]);
+        strArray->len[i] = strlen(strings[i]);
+    }
+}
+
 int *newIntArray(int N) {
     return (int *) malloc(sizeof(int) * N);
 }

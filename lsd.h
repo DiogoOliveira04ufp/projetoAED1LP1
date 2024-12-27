@@ -3,6 +3,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 typedef struct {
     char ** str;  // array of strings
@@ -12,6 +13,7 @@ typedef struct {
 
 void lsd_sort_stringElements(StringElementsArray *a, int swidth, int radix);
 void createStringElementsArray(StringElementsArray * si, int N);
+void createStringElementsArrayAndFill(StringElementsArray * si, int N, char ** strings);
 int *newIntArray(int N);
 void freeStringElementsArray(StringElementsArray * si);
 

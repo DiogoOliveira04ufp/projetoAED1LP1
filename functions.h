@@ -1,5 +1,5 @@
-#ifndef DECL_H
-#define DECL_H
+#ifndef FUNCTIONS_H
+#define FUNCTIONS_H
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -33,4 +33,4 @@ void insertStrings(MATRIX_STRINGS *matrix);
 void removeStrings(MATRIX_STRINGS matrix, int index);
 void insertStringIntoMatrix(MATRIX_STRINGS *matrix, char str[]);
 
-#endif //DECL_H
+#endif // FUNCTIONS_H

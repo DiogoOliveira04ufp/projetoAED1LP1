@@ -7,4 +7,6 @@ add_executable(untitled main.c
         functions.h
         functions.c
         lsd.c
-        lsd.h)
+        lsd.h
+        tests.c
+        tests.h)
