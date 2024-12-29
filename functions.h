@@ -24,7 +24,7 @@ typedef struct llMatrices {
 
 typedef struct adllMatrices {
     int size;
-    LL_MATRICES *lists; //= malloc(sizeof(LL_MATRICES) * size);
+    LL_MATRICES *lists;
 } AD_LL_MATRICES;
 
 char resizeStringArray(char *string, int resize);

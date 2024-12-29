@@ -3,6 +3,6 @@
 
 int main()
 {
-    testLSDsort();
+    testKMP();
     return 0;
 }

@@ -9,4 +9,6 @@ add_executable(untitled main.c
         lsd.c
         lsd.h
         tests.c
-        tests.h)
+        tests.h
+        kmp.c
+        kmp.h)

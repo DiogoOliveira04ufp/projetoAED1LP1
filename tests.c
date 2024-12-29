@@ -1,5 +1,6 @@
 #include "tests.h"
 
+
 void testInsertPrint()
 {
     MATRIX_STRINGS matrix;
@@ -86,4 +87,21 @@ void testLSDsort()
     free(matrix.strings);
     free(str.str);
     free(str.len);
+}
+
+void testKMP()
+{
+    const char *pat = "ABABAC";
+    const char *txt = "ABABABABABAC";
+
+    KMP *kmp = KMP_init(pat);
+    int pos = KMP_search(kmp, txt);
+
+    if (pos < strlen(txt)) {
+        printf("Padrao encontrado na posicao: %d\n", pos);
+    } else {
+        printf("Padrao nao encontrado.\n");
+    }
+
+    KMP_free(kmp);
 }

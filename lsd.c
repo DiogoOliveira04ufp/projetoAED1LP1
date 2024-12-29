@@ -44,7 +44,6 @@ void freeStringElementsArray(StringElementsArray * si)
 {
     free(si->str);
     free(si->len);
-    return;
 }
 
 void createStringElementsArray(StringElementsArray *si, int N)
@@ -52,7 +51,6 @@ void createStringElementsArray(StringElementsArray *si, int N)
     si->N = N;
     si->str = (char **) malloc(sizeof(char *)*N);
     si->len = (int *) malloc(sizeof(int)*N);
-    return;
 }
 
 void createStringElementsArrayAndFill(StringElementsArray *strArray, int N, char **strings)
@@ -60,7 +58,8 @@ void createStringElementsArrayAndFill(StringElementsArray *strArray, int N, char
     strArray->N = N;
     strArray->str = (char **)malloc(sizeof(char *) * N);
     strArray->len = (int *)malloc(sizeof(int) * N);
-    for (int i = 0; i < N; i++) {
+    for (int i = 0; i < N; i++)
+    {
         strArray->str[i] = strdup(strings[i]);
         strArray->len[i] = strlen(strings[i]);
     }
