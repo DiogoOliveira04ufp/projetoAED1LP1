@@ -1,7 +1,3 @@
-//
-// Created by Utilizador on 28/12/2024.
-//
-
 #include "kmp.h"
 
 // Função para inicializar a estrutura KMP

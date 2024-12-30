@@ -17,7 +17,7 @@ void testInsertPrint()
     matrix.size = size;
 
     printStrings(matrix);
-
+    printf("----------------------------------------------\n");
     insertStringIntoMatrix(&matrix, nstring);
     printStrings(matrix);
 
@@ -104,4 +104,31 @@ void testKMP()
     }
 
     KMP_free(kmp);
+}
+
+void testGermin()
+{
+    MATRIX_STRINGS matrix;
+    int size = 6;
+    char **conjunto = malloc(sizeof(char *) * 6);
+    conjunto[0] = strdup("claro");
+    conjunto[1] = strdup("aro");
+    conjunto[2] = strdup("faro");
+    conjunto[3] = strdup("pifaro");
+    conjunto[4] = strdup("pifa");
+    conjunto[5] = strdup("ar");
+
+    matrix.strings = conjunto;
+    matrix.size = size;
+
+    printStrings(matrix);                            //imprimir todas as strings ({"claro", "aro", "faro", "pifaro", "pifa", "ar"})
+    printf("---------------------------\n");
+
+    germin(&matrix);
+
+    for (int i = 0; i < size; i++)
+    {
+        free(matrix.strings[i]);
+    }
+    free(matrix.strings);
 }

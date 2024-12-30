@@ -3,6 +3,6 @@
 
 int main()
 {
-    testKMP();
+    testGermin();
     return 0;
 }

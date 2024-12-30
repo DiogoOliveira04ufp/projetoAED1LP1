@@ -11,4 +11,6 @@ add_executable(untitled main.c
         tests.c
         tests.h
         kmp.c
-        kmp.h)
+        kmp.h
+        germin.c
+        germin.h)
