@@ -10,6 +10,7 @@ void germin(MATRIX_STRINGS *matrix)
     for (int i = 0; i < matrix->size; i++)
     {
         word = matrix->strings[i];
+        k = 0;
         for (int j = 0; j < matrix->size; j++)
         {
             if (matrix->strings[j] != word)
@@ -25,18 +26,22 @@ void germin(MATRIX_STRINGS *matrix)
                 KMP_free(pattern);
             }
         }
-        for (int j = 0; j < k; j++)
-        {
-            printf("%s-->", sequence[j]);
-        }
-        printf("NULL\n"); // End of sequence
-
-        // Clear the sequence array
-        for (int j = 0; j < k; j++)
-        {
-            sequence[j] = NULL;
-        }
-        k = 0; // Reset k for the next sequence
+        //if (k > 0)
+        //<<{
+            printf("%s-->", matrix->strings[i]);
+            for (int j = 0; j < k; j++)
+            {
+                if (j == k - 1)
+                {
+                    printf("%s", sequence[j]);
+                }
+                else
+                {
+                    printf("%s-->", sequence[j]);
+                }
+            }
+            printf("\n"); // End of sequence
+        //}
     }
 
     free(sequence);
