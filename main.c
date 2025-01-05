@@ -2,6 +2,6 @@
 #include "tests.h"
 
 int main()
-{    testWriteToFile();
+{ ordemt();
     return 0;
 }

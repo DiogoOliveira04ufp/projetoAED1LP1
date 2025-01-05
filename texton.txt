@@ -1,6 +1,1 @@
-claro
-aro
-faro
-pifaro
-pifa
-ar
+claro aro faro pifaro pifa ar 

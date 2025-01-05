@@ -248,6 +248,30 @@ main.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\untitled.dir\build.make CMakeFiles/untitled.dir/main.c.s
 .PHONY : main.c.s
 
+ordem.obj: ordem.c.obj
+.PHONY : ordem.obj
+
+# target to build an object file
+ordem.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\untitled.dir\build.make CMakeFiles/untitled.dir/ordem.c.obj
+.PHONY : ordem.c.obj
+
+ordem.i: ordem.c.i
+.PHONY : ordem.i
+
+# target to preprocess a source file
+ordem.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\untitled.dir\build.make CMakeFiles/untitled.dir/ordem.c.i
+.PHONY : ordem.c.i
+
+ordem.s: ordem.c.s
+.PHONY : ordem.s
+
+# target to generate assembly for a file
+ordem.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\untitled.dir\build.make CMakeFiles/untitled.dir/ordem.c.s
+.PHONY : ordem.c.s
+
 tests.obj: tests.c.obj
 .PHONY : tests.obj
 
@@ -296,6 +320,9 @@ help:
 	@echo ... main.obj
 	@echo ... main.i
 	@echo ... main.s
+	@echo ... ordem.obj
+	@echo ... ordem.i
+	@echo ... ordem.s
 	@echo ... tests.obj
 	@echo ... tests.i
 	@echo ... tests.s

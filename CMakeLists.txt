@@ -14,4 +14,6 @@ add_executable(untitled main.c
         kmp.h
         germin.c
         germin.h
-        functions.c)
+        functions.c
+        ordem.c
+        ordem.h)

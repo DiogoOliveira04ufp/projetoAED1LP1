@@ -9,6 +9,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/untitled.dir/lsd.c.obj.d"
   "CMakeFiles/untitled.dir/main.c.obj"
   "CMakeFiles/untitled.dir/main.c.obj.d"
+  "CMakeFiles/untitled.dir/ordem.c.obj"
+  "CMakeFiles/untitled.dir/ordem.c.obj.d"
   "CMakeFiles/untitled.dir/tests.c.obj"
   "CMakeFiles/untitled.dir/tests.c.obj.d"
   "libuntitled.dll.a"

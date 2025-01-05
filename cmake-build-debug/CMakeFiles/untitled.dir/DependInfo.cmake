@@ -13,6 +13,7 @@ set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "C:/Users/joaop/OneDrive/Ambiente de Trabalho/projetoAED1LP1-main/kmp.c" "CMakeFiles/untitled.dir/kmp.c.obj" "gcc" "CMakeFiles/untitled.dir/kmp.c.obj.d"
   "C:/Users/joaop/OneDrive/Ambiente de Trabalho/projetoAED1LP1-main/lsd.c" "CMakeFiles/untitled.dir/lsd.c.obj" "gcc" "CMakeFiles/untitled.dir/lsd.c.obj.d"
   "C:/Users/joaop/OneDrive/Ambiente de Trabalho/projetoAED1LP1-main/main.c" "CMakeFiles/untitled.dir/main.c.obj" "gcc" "CMakeFiles/untitled.dir/main.c.obj.d"
+  "C:/Users/joaop/OneDrive/Ambiente de Trabalho/projetoAED1LP1-main/ordem.c" "CMakeFiles/untitled.dir/ordem.c.obj" "gcc" "CMakeFiles/untitled.dir/ordem.c.obj.d"
   "C:/Users/joaop/OneDrive/Ambiente de Trabalho/projetoAED1LP1-main/tests.c" "CMakeFiles/untitled.dir/tests.c.obj" "gcc" "CMakeFiles/untitled.dir/tests.c.obj.d"
   )
 
