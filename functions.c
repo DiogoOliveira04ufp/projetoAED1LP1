@@ -94,6 +94,72 @@ void writeStringsToFile(const char *filename, MATRIX_STRINGS matrix)
     printf("Dados escritos no ficheiro: %s\n", filename);
 }
 
+void writeStringsToBinaryFile(const char *filename, MATRIX_STRINGS matrix)
+{
+    FILE *file = fopen(filename, "wb");
+    if (file == NULL) {
+        perror("Erro ao abrir o ficheiro");
+        return;
+    }
+
+    for (int i = 0; i < matrix.size; i++) {
+        size_t length = strlen(matrix.strings[i]) + 1;                              // +1 para incluir o caracter nulo
+        if (fwrite(&length, sizeof(size_t), 1, file) != 1) {
+            perror("Erro ao escrever o tamanho da string no ficheiro");
+            fclose(file);
+            return;
+        }
+        if (fwrite(matrix.strings[i], sizeof(char), length, file) != length) {
+            perror("Erro ao escrever a string no ficheiro");
+            fclose(file);
+            return;
+        }
+
+    }
+
+    fclose(file);
+    printf("Dados escritos no ficheiro binario: %s\n", filename);
+}
+
+void readStringsFromBinaryFile(const char *filename, MATRIX_STRINGS *matrix)
+{
+    FILE *file = fopen(filename, "rb");
+    if (file == NULL) {
+        perror("Erro ao abrir o ficheiro");
+        return;
+    }
+
+    while (1) {
+        size_t length;
+        if (fread(&length, sizeof(size_t), 1, file) != 1) {
+            if (feof(file)) break; // Fim do ficheiro
+            perror("Erro ao ler o tamanho da string do ficheiro");
+            fclose(file);
+            return;
+        }
+
+        char *str = malloc(length);
+        if (str == NULL) {
+            perror("Erro ao alocar memória para a string");
+            fclose(file);
+            return;
+        }
+
+        if (fread(str, sizeof(char), length, file) != length) {
+            perror("Erro ao ler a string do ficheiro");
+            free(str);
+            fclose(file);
+            return;
+        }
+
+        insertStringIntoMatrix(matrix, str);
+        free(str);
+    }
+
+    fclose(file);
+    printf("Dados lidos do ficheiro binario: %s\n", filename);
+}
+
 //inserir uma matriz num nó, e depois numa lista ligada de nós
 void insertNodeIntoList(MATRIX_STRINGS matrix, NODE_MATRIX *node, LL_MATRICES *list)
 {
