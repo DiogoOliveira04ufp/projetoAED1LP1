@@ -29,8 +29,7 @@ KMP* KMP_init(const char *pat)
 // Função para buscar o padrão em um texto
 int KMP_search(KMP *kmp, const char *txt)
 {
-    int N = strlen(txt);
-    int i, j;
+    int i, j, N = strlen(txt);
     for (i = 0, j = 0; i < N && j < kmp->M; i++)
     {
         j = kmp->dfa[(unsigned char)txt[i]][j];

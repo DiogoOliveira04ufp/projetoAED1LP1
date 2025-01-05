@@ -1,96 +1,59 @@
 #include "germin.h"
 
-void germin(MATRIX_STRINGS *matrix)
-{
-    KMP *pattern;
-    char *word;
-    char **sequence = malloc(sizeof(char *) * matrix->size);
-    int k = 0;
+#include "germin.h"
+#include <string.h>
 
-    for (int i = 0; i < matrix->size; i++)
-    {
-        word = matrix->strings[i];
-        k = 0;
-        for (int j = 0; j < matrix->size; j++)
-        {
-            if (matrix->strings[j] != word)
-            {
-                pattern = KMP_init(word);
-                int pos = KMP_search(pattern, matrix->strings[j]);
-                if (pos < strlen(matrix->strings[j]))
-                {
-                    sequence[k] = matrix->strings[j];
-                    k++;
-                    word = matrix->strings[j];
-                }
-                KMP_free(pattern);
-            }
-        }
-        //if (k > 0)
-        //<<{
-            printf("%s-->", matrix->strings[i]);
-            for (int j = 0; j < k; j++)
-            {
-                if (j == k - 1)
-                {
-                    printf("%s", sequence[j]);
-                }
-                else
-                {
-                    printf("%s-->", sequence[j]);
-                }
-            }
-            printf("\n"); // End of sequence
-        //}
-    }
+// Função auxiliar para verificar se a string `a` cabe dentro da string `b`
+int canGerminate(const char *a, const char *b) {
+    int lenA = strlen(a);
+    int lenB = strlen(b);
 
-    free(sequence);
+    // Verificar se `a` é prefixo ou sufixo de `b`
+    if (lenA > lenB) return 0; // `a` não pode ser maior que `b`
+    return (strncmp(a, b, lenA) == 0 || strncmp(a, b + lenB - lenA, lenA) == 0);
 }
 
-/*
-// Função para verificar se uma palavra está contida em outra
-int contemPalavra(const char principal, const char *outra)
-{
-    return strstr(principal, outra) != NULL;
+// Função para imprimir o caminho na ordem correta
+void printPath(char **currentPath, int pathSize) {
+    printf("Sequencia: ");
+    for (int i = 0; i < pathSize; i++) { // Imprimir na ordem natural
+        printf("%s%s", currentPath[i], (i == pathSize - 1) ? "\n" : " --> ");
+    }
 }
 
-// Função para encontrar combinações máximas dentro da palavra principal
-void verificarMaximoCombinacoes(Palavra *palavras, int tamanho)
-{
-    for (int i = 0; i < tamanho; i++) {
-        char palavraPrincipal[100];
-        strcpy(palavraPrincipal, palavras[i].palavra);
+// Função recursiva para encontrar todas as sequências de germinação
+void findGerminations(MATRIX_STRINGS *matrix, int index, char **currentPath, int pathSize, int *visited) {
+    currentPath[pathSize] = matrix->strings[index];
+    pathSize++;
+    visited[index] = 1;
 
-        printf("\nVerificando combinações para a palavra principal: %s\n", palavraPrincipal);
-
-        int encontrou = 0;
-
-        for (int j = 0; j < tamanho; j++)
-        {
-            if (i != j && contemPalavra(palavraPrincipal, palavras[j].palavra)) {
-                encontrou = 1;
-                printf("A palavra '%s' pode ser usada dentro de '%s'\n", palavras[j].palavra, palavraPrincipal);
-
-                // Remover a ocorrência da palavra encontrada
-                char pos = strstr(palavraPrincipal, palavras[j].palavra);
-                if (pos) {
-                    int len = strlen(palavras[j].palavra);
-                    memmove(pos, pos + len, strlen(pos + len) + 1);
-                }
-            }
-        }
-
-        if (!encontrou)
-        {
-            printf("Nenhuma combinação encontrada para '%s'.\n", palavras[i].palavra);
-        }
-        else
-        {
-            printf("Restante da palavra principal após combinações: '%s'\n", palavraPrincipal);
+    // Expandir para outras strings
+    int found = 0;
+    for (int i = 0; i < matrix->size; i++) {
+        if (!visited[i] && canGerminate(matrix->strings[index], matrix->strings[i])) {
+            findGerminations(matrix, i, currentPath, pathSize, visited);
+            found = 1;
         }
     }
-}*/
 
-/*
+    // Se não houver mais strings para expandir, imprimir o caminho
+    if (!found) {
+        printPath(currentPath, pathSize);
+    }
 
-*/
+    // Backtrack
+    visited[index] = 0;
+}
+
+// Função principal para encontrar todas as sequências de germinação
+void germin(MATRIX_STRINGS *matrix) {
+    char **currentPath = malloc(sizeof(char *) * matrix->size);
+    int *visited = calloc(matrix->size, sizeof(int));
+
+    for (int i = 0; i < matrix->size; i++) {
+        findGerminations(matrix, i, currentPath, 0, visited);
+    }
+
+    free(currentPath);
+    free(visited);
+}

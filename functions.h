@@ -32,5 +32,6 @@ void printStrings(MATRIX_STRINGS matrix);
 void insertStrings(MATRIX_STRINGS *matrix);
 void removeStrings(MATRIX_STRINGS matrix, int index);
 void insertStringIntoMatrix(MATRIX_STRINGS *matrix, char str[]);
+void insertNode(MATRIX_STRINGS matrix, NODE_MATRIX node);
 
 #endif // FUNCTIONS_H

@@ -18,5 +18,7 @@ typedef struct {
 
 
 void germin(MATRIX_STRINGS *matrix);
+int canGerminate(const char *a, const char *b);
+void findGerminations(MATRIX_STRINGS *matrix, int index, char **currentPath, int pathSize, int *visited);
 
 #endif //GERMIN_H
