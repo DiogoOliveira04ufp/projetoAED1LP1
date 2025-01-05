@@ -95,12 +95,9 @@ void writeStringsToFile(const char *filename, MATRIX_STRINGS matrix)
 }
 
 //inserir uma matriz num nó, e depois numa lista ligada de nós
-void insertMatrixIntoNode(MATRIX_STRINGS matrix, NODE_MATRIX *node, LL_MATRICES *list)
+void insertNodeIntoList(MATRIX_STRINGS matrix, NODE_MATRIX *node, LL_MATRICES *list)
 {
     node->lista_strings = matrix;
-    node->year = 2025;              // Defina o ano conforme necessário
-    node->month = 1;                // Defina o mês conforme necessário
-    node->day = 8;                  // Defina o dia conforme necessário
     node->nextNode = NULL;
     node->prevNode = NULL;
 
@@ -112,7 +109,10 @@ void insertMatrixIntoNode(MATRIX_STRINGS matrix, NODE_MATRIX *node, LL_MATRICES 
     else
     {
         NODE_MATRIX *current = list->firstMatrix;
-        while (current != NULL && (current->year < node->year || (current->year == node->year && current->month < node->month) || (current->year == node->year && current->month == node->month && current->day < node->day)))
+        while (current != NULL &&
+               (current->year < node->year ||
+               (current->year == node->year && current->month < node->month) ||
+               (current->year == node->year && current->month == node->month && current->day < node->day)))
         {
             current = current->nextNode;
         }
@@ -151,6 +151,54 @@ void printNodeList(LL_MATRICES *list)
         printStrings(current->lista_strings);
         current = current->nextNode;
     }
+}
+
+void insertNodeIntoPosition(NODE_MATRIX *node, LL_MATRICES *list, int position)
+{
+    if (position < 0 || position > list->size)
+    {
+        printf("Posicao fora dos limites\n");
+        return;
+    }
+
+    if (position == 0)
+    {
+        node->nextNode = list->firstMatrix;
+        node->prevNode = NULL;
+        if (list->firstMatrix != NULL)
+        {
+            list->firstMatrix->prevNode = node;
+        }
+        list->firstMatrix = node;
+        if (list->size == 0)
+        {
+            list->lastMatrix = node;
+        }
+    }
+    else if (position == list->size)
+    {
+        node->nextNode = NULL;
+        node->prevNode = list->lastMatrix;
+        if (list->lastMatrix != NULL)
+        {
+            list->lastMatrix->nextNode = node;
+        }
+        list->lastMatrix = node;
+    }
+    else
+    {
+        NODE_MATRIX *current = list->firstMatrix;
+        for (int i = 0; i < position - 1; i++)
+        {
+            current = current->nextNode;
+        }
+        node->nextNode = current->nextNode;
+        node->prevNode = current;
+        current->nextNode->prevNode = node;
+        current->nextNode = node;
+    }
+
+    list->size++;
 }
 
 /*

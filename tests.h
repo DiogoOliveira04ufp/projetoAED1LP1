@@ -15,6 +15,6 @@ void testKMP();
 void testGermin();
 void testWriteToFile();
 void testReadFromFile();
-void testInsertMatrixIntoNode();
-
+void testInsertNodeIntoList();
+void testInsertNodeIntoPosition();
 #endif //TESTS_H

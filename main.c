@@ -3,6 +3,6 @@
 
 int main()
 {
-    testReadFromFile();
+    testInsertNodeIntoPosition();
     return 0;
 }

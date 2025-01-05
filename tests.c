@@ -209,9 +209,8 @@ void testReadFromFile()
     free(matrix.strings);
 }
 
-
 //Teste da inserção das listas ligadas
-void testInsertMatrixIntoNode()
+void testInsertNodeIntoList()
 {
     LL_MATRICES list;
     list.size = 0;
@@ -248,9 +247,9 @@ void testInsertMatrixIntoNode()
     node3.month = 1;
     node3.day = 1;
 
-    insertMatrixIntoNode(matrix1, &node1, &list);
-    insertMatrixIntoNode(matrix2, &node2, &list);
-    insertMatrixIntoNode(matrix3, &node3, &list);
+    insertNodeIntoList(matrix1, &node1, &list);
+    insertNodeIntoList(matrix2, &node2, &list);
+    insertNodeIntoList(matrix3, &node3, &list);
 
     printNodeList(&list);
 
@@ -260,4 +259,41 @@ void testInsertMatrixIntoNode()
     free(matrix2.strings);
     free(matrix3.strings[0]);
     free(matrix3.strings);
+}
+
+void testInsertNodeIntoPosition()
+{
+    LL_MATRICES list;
+    list.size = 0;
+    list.firstMatrix = NULL;
+    list.lastMatrix = NULL;
+
+    // Criar e inserir o primeiro nó na posição 0
+    NODE_MATRIX *node1 = malloc(sizeof(NODE_MATRIX));
+    node1->year = 2023;
+    node1->month = 10;
+    node1->day = 1;
+    insertNodeIntoPosition(node1, &list, 0);
+
+    // Criar e inserir o segundo nó na posição 1
+    NODE_MATRIX *node2 = malloc(sizeof(NODE_MATRIX));
+    node2->year = 2023;
+    node2->month = 10;
+    node2->day = 2;
+    insertNodeIntoPosition(node2, &list, 1);
+
+    // Criar e inserir o terceiro nó na posição 1 (entre node1 e node2)
+    NODE_MATRIX *node3 = malloc(sizeof(NODE_MATRIX));
+    node3->year = 2023;
+    node3->month = 10;
+    node3->day = 3;
+    insertNodeIntoPosition(node3, &list, 1);
+
+    // Imprimir a lista para verificar a ordem dos nós
+    printNodeList(&list);
+
+    // Libertar memória
+    free(node1);
+    free(node2);
+    free(node3);
 }
