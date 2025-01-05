@@ -1,0 +1,1 @@
+CMakeLists.txt not found in C:\Users\joaop\OneDrive\Ambiente de Trabalho\projetoAED1LP1-main\projetoAED1LP1-main Select CMakeLists.txt
