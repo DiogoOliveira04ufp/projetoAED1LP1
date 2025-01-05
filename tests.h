@@ -13,5 +13,5 @@ void testRemove();
 void testLSDsort();
 void testKMP();
 void testGermin();
-
+void testWriteToFile();
 #endif //TESTS_H

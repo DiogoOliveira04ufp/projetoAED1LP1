@@ -132,3 +132,43 @@ void testGermin()
     }
     free(matrix.strings);
 }
+void testWriteToFile() {
+    MATRIX_STRINGS matrix;
+    int size = 6;
+    char **conjunto = malloc(sizeof(char *) * size);
+
+    if (conjunto == NULL) {
+        perror("Erro ao alocar memória para conjunto");
+        return;
+    }
+
+    conjunto[0] = strdup("claro");
+    conjunto[1] = strdup("aro");
+    conjunto[2] = strdup("faro");
+    conjunto[3] = strdup("pifaro");
+    conjunto[4] = strdup("pifa");
+    conjunto[5] = strdup("ar");
+
+    for (int i = 0; i < size; i++) {
+        if (conjunto[i] == NULL) {
+            perror("Erro ao duplicar string");
+            for (int j = 0; j < i; j++) {
+                free(conjunto[j]);
+            }
+            free(conjunto);
+            return;
+        }
+    }
+
+    matrix.strings = conjunto;
+    matrix.size = size;
+
+    writeStringsToFile("texton.txt", matrix);
+
+    for (int i = 0; i < size; i++) {
+        free(conjunto[i]);
+    }
+    free(conjunto);
+    printf("Verifique o ficheiro!\n");
+}
+

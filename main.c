@@ -2,7 +2,6 @@
 #include "tests.h"
 
 int main()
-{
-    testGermin();
+{    testWriteToFile();
     return 0;
 }
