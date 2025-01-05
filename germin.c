@@ -13,8 +13,8 @@ int canGerminate(const char *a, const char *b)
     int lenA = strlen(a);
     int lenB = strlen(b);
 
-    // Verificar se `a` é prefixo ou sufixo de `b`
-    if (lenA > lenB) return 0; // `a` não pode ser maior que `b`
+    // Verificar se 'a' é prefixo ou sufixo de 'b'
+    if (lenA > lenB) return 0;                                                 // `a` não pode ser maior que `b`
     return (strncmp(a, b, lenA) == 0 || strncmp(a, b + lenB - lenA, lenA) == 0);
 }
 
@@ -22,7 +22,7 @@ int canGerminate(const char *a, const char *b)
 void printPath(char **currentPath, int pathSize)
 {
     printf("Sequencia: ");
-    for (int i = 0; i < pathSize; i++)          // Imprimir na ordem natural
+    for (int i = 0; i < pathSize; i++)                                         // Imprimir na ordem natural
     {
         printf("%s%s", currentPath[i], (i == pathSize - 1) ? "\n" : " --> ");
     }

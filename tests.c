@@ -137,6 +137,8 @@ void testGermin()
     free(matrix.strings);
 }
 
+//Testar a escrita no ficheiro; normal e binário
+//inicializa uma matriz e escreve-a no ficheiro pela função writeStringsToFile()
 void testWriteToFile()
 {
     MATRIX_STRINGS matrix;
@@ -183,6 +185,8 @@ void testWriteToFile()
     printf("Verifique o ficheiro!\n");
 }
 
+//Teste para ler as strings no ficheiro
+//Utiliza o teste anterior para escrever strings no ficheiro, depois lê-as e imprime-as na consola
 void testReadFromFile()
 {
     //escrever strings no ficheiro para ler
@@ -210,6 +214,7 @@ void testReadFromFile()
     free(matrix.strings);
 }
 
+
 void testReadFromBinaryFile()
 {
     // Escrever strings no ficheiro binário para ler
@@ -219,7 +224,7 @@ void testReadFromBinaryFile()
     matrix.size = 0;
     matrix.strings = NULL;
 
-    readStringsFromBinaryFile("C:/Users/joaop/OneDrive/Ambiente de Trabalho/projetoAED1LP1-main/textob.txt", &matrix);
+    readStringsFromBinaryFile("C:/Users/Utilizador/CLionProjects/projetoAED1LP1/textob.txt", &matrix);
 
     if (matrix.strings == NULL)
     {
@@ -237,14 +242,13 @@ void testReadFromBinaryFile()
     free(matrix.strings);
 }
 
-//ordenação por tamanhos mais pequeno para o maior
+//Teste da ordenação por tamanhos
 void ordemt()
 {
     MATRIX_STRINGS matrix;
     int size = 6;
     char **conjunto = malloc(sizeof(char *) * size);
 
-    // Preencher as strings
     conjunto[0] = strdup("claro");
     conjunto[1] = strdup("aro");
     conjunto[2] = strdup("faro");
@@ -255,16 +259,13 @@ void ordemt()
     matrix.strings = conjunto;
     matrix.size = size;
 
-    // Ordenar as strings manualmente
     ordenar_strings(&matrix);
 
-    // Imprimir as strings ordenadas
     printf("Strings ordenadas por tamanho:\n");
     for (int i = 0; i < matrix.size; i++) {
         printf("%s\n", matrix.strings[i]);
     }
 
-    // Liberar a memória alocada
     for (int i = 0; i < matrix.size; i++) {
         free(matrix.strings[i]);
     }
@@ -323,6 +324,7 @@ void testInsertNodeIntoList()
     free(matrix3.strings);
 }
 
+//Teste para inserir nós numa dada posição da lista ligada
 void testInsertNodeIntoPosition()
 {
     LL_MATRICES list;

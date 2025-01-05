@@ -3,6 +3,6 @@
 
 int main()
 {
-    testInsertNodeIntoPosition();
+    ordemt();
     return 0;
 }

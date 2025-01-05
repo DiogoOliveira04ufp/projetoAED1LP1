@@ -55,6 +55,7 @@ void removeStrings(MATRIX_STRINGS matrix, int index)
     }
 }
 
+//ler strings escritas no ficheiro
 void readStringsFromFile(const char *filename, MATRIX_STRINGS *matrix)
 {
     FILE *file = fopen(filename, "r");
@@ -78,6 +79,7 @@ void readStringsFromFile(const char *filename, MATRIX_STRINGS *matrix)
     fclose(file);
 }
 
+//escrever strings no ficheiro
 void writeStringsToFile(const char *filename, MATRIX_STRINGS matrix)
 {
     FILE *file = fopen(filename, "w");
@@ -94,6 +96,7 @@ void writeStringsToFile(const char *filename, MATRIX_STRINGS matrix)
     printf("Dados escritos no ficheiro: %s\n", filename);
 }
 
+//escrever strings no ficheiro em binário
 void writeStringsToBinaryFile(const char *filename, MATRIX_STRINGS matrix)
 {
     FILE *file = fopen(filename, "wb");
@@ -121,6 +124,7 @@ void writeStringsToBinaryFile(const char *filename, MATRIX_STRINGS matrix)
     printf("Dados escritos no ficheiro binario: %s\n", filename);
 }
 
+//ler strings em formato binário a partir do ficheiro
 void readStringsFromBinaryFile(const char *filename, MATRIX_STRINGS *matrix)
 {
     FILE *file = fopen(filename, "rb");
@@ -219,6 +223,7 @@ void printNodeList(LL_MATRICES *list)
     }
 }
 
+//inserir um nó numa dada posição na lista ligada
 void insertNodeIntoPosition(NODE_MATRIX *node, LL_MATRICES *list, int position)
 {
     if (position < 0 || position > list->size)
