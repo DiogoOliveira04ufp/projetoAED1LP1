@@ -3,8 +3,13 @@
 #include "germin.h"
 #include <string.h>
 
+// Variáveis globais para contagem de sequências e tamanho da maior sequência
+int totalSequences = 0;
+int maxSequenceLength = 0;
+
 // Função auxiliar para verificar se a string `a` cabe dentro da string `b`
-int canGerminate(const char *a, const char *b) {
+int canGerminate(const char *a, const char *b)
+{
     int lenA = strlen(a);
     int lenB = strlen(b);
 
@@ -14,30 +19,43 @@ int canGerminate(const char *a, const char *b) {
 }
 
 // Função para imprimir o caminho na ordem correta
-void printPath(char **currentPath, int pathSize) {
+void printPath(char **currentPath, int pathSize)
+{
     printf("Sequencia: ");
-    for (int i = 0; i < pathSize; i++) { // Imprimir na ordem natural
+    for (int i = 0; i < pathSize; i++)          // Imprimir na ordem natural
+    {
         printf("%s%s", currentPath[i], (i == pathSize - 1) ? "\n" : " --> ");
+    }
+
+    // Atualizar contagem de sequências e tamanho da maior sequência
+    totalSequences++;
+    if (pathSize > maxSequenceLength)
+    {
+        maxSequenceLength = pathSize;
     }
 }
 
 // Função recursiva para encontrar todas as sequências de germinação
-void findGerminations(MATRIX_STRINGS *matrix, int index, char **currentPath, int pathSize, int *visited) {
+void findGerminations(MATRIX_STRINGS *matrix, int index, char **currentPath, int pathSize, int *visited)
+{
     currentPath[pathSize] = matrix->strings[index];
     pathSize++;
     visited[index] = 1;
 
     // Expandir para outras strings
     int found = 0;
-    for (int i = 0; i < matrix->size; i++) {
-        if (!visited[i] && canGerminate(matrix->strings[index], matrix->strings[i])) {
+    for (int i = 0; i < matrix->size; i++)
+    {
+        if (!visited[i] && canGerminate(matrix->strings[index], matrix->strings[i]))
+        {
             findGerminations(matrix, i, currentPath, pathSize, visited);
             found = 1;
         }
     }
 
     // Se não houver mais strings para expandir, imprimir o caminho
-    if (!found) {
+    if (!found)
+    {
         printPath(currentPath, pathSize);
     }
 
@@ -46,13 +64,21 @@ void findGerminations(MATRIX_STRINGS *matrix, int index, char **currentPath, int
 }
 
 // Função principal para encontrar todas as sequências de germinação
-void germin(MATRIX_STRINGS *matrix) {
+void germin(MATRIX_STRINGS *matrix)
+{
     char **currentPath = malloc(sizeof(char *) * matrix->size);
     int *visited = calloc(matrix->size, sizeof(int));
 
-    for (int i = 0; i < matrix->size; i++) {
+    totalSequences = 0;
+    maxSequenceLength = 0;
+
+    for (int i = 0; i < matrix->size; i++)
+    {
         findGerminations(matrix, i, currentPath, 0, visited);
     }
+
+    printf("\nC = %d\n", totalSequences);
+    printf("L = %d\n", maxSequenceLength);
 
     free(currentPath);
     free(visited);
