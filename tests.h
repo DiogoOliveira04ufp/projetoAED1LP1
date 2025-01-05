@@ -13,5 +13,8 @@ void testRemove();
 void testLSDsort();
 void testKMP();
 void testGermin();
+void testWriteToFile();
+void testReadFromFile();
+void testInsertMatrixIntoNode();
 
 #endif //TESTS_H

@@ -27,11 +27,14 @@ typedef struct adllMatrices {
     LL_MATRICES *lists;
 } AD_LL_MATRICES;
 
-char resizeStringArray(char *string, int resize);
+char *resizeStringArray(char *string, int resize);
 void printStrings(MATRIX_STRINGS matrix);
 void insertStrings(MATRIX_STRINGS *matrix);
 void removeStrings(MATRIX_STRINGS matrix, int index);
 void insertStringIntoMatrix(MATRIX_STRINGS *matrix, char str[]);
-void insertNode(MATRIX_STRINGS matrix, NODE_MATRIX node);
+void readStringsFromFile(const char *filename, MATRIX_STRINGS *matrix);
+void writeStringsToFile(const char *filename, MATRIX_STRINGS matrix);
+void insertMatrixIntoNode(MATRIX_STRINGS matrix, NODE_MATRIX *node, LL_MATRICES *list);
+void printNodeList(LL_MATRICES *list);
 
 #endif // FUNCTIONS_H

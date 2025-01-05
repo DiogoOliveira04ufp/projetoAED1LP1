@@ -1,6 +1,6 @@
 #include "tests.h"
 
-
+//Teste para as funções inserir e imprimir, utiliza o exemplo no protocolo tal como maior parte destes testes
 void testInsertPrint()
 {
     MATRIX_STRINGS matrix;
@@ -24,6 +24,7 @@ void testInsertPrint()
     free(conjunto);
 }
 
+//Teste para a função remover
 void testRemove()
 {
     MATRIX_STRINGS matrix;
@@ -51,6 +52,7 @@ void testRemove()
     free(conjunto);
 }
 
+//Teste para a ordenação por ordem alfabética
 void testLSDsort()
 {
     MATRIX_STRINGS matrix;
@@ -89,6 +91,7 @@ void testLSDsort()
     free(str.len);
 }
 
+//Teste para a pesquisa de strings, importante para a funcionalidade principal
 void testKMP()
 {
     const char *pat = "ABABAC";
@@ -106,6 +109,7 @@ void testKMP()
     KMP_free(kmp);
 }
 
+//Teste da funcionalidade principal, a germinação de strings
 void testGermin()
 {
     MATRIX_STRINGS matrix;
@@ -131,4 +135,129 @@ void testGermin()
         free(matrix.strings[i]);
     }
     free(matrix.strings);
+}
+
+void testWriteToFile()
+{
+    MATRIX_STRINGS matrix;
+    int size = 6;
+    char **conjunto = malloc(sizeof(char *) * size);
+
+    if (conjunto == NULL) {
+        perror("Erro ao alocar memória para conjunto");
+        return;
+    }
+
+    conjunto[0] = strdup("claro");
+    conjunto[1] = strdup("aro");
+    conjunto[2] = strdup("faro");
+    conjunto[3] = strdup("pifaro");
+    conjunto[4] = strdup("pifa");
+    conjunto[5] = strdup("ar");
+
+    for (int i = 0; i < size; i++)
+    {
+        if (conjunto[i] == NULL)
+        {
+            perror("Erro ao duplicar string");
+            for (int j = 0; j < i; j++)
+            {
+                free(conjunto[j]);
+            }
+            free(conjunto);
+            return;
+        }
+    }
+
+    matrix.strings = conjunto;
+    matrix.size = size;
+
+    writeStringsToFile("C:/Users/Utilizador/CLionProjects/projetoAED1LP1/texton.txt", matrix);
+
+    for (int i = 0; i < size; i++)
+    {
+        free(conjunto[i]);
+    }
+    free(conjunto);
+    printf("Verifique o ficheiro!\n");
+}
+
+void testReadFromFile()
+{
+    //escrever strings no ficheiro para ler
+    testWriteToFile();
+
+    MATRIX_STRINGS matrix;
+    matrix.size = 0;
+    matrix.strings = NULL;
+
+    readStringsFromFile("C:/Users/Utilizador/CLionProjects/projetoAED1LP1/texton.txt", &matrix);
+
+    if (matrix.strings == NULL)
+    {
+        printf("Erro na leitura\n");
+    }
+    else
+    {
+        printStrings(matrix);
+    }
+
+    for (int i = 0; i < matrix.size; i++)
+    {
+        free(matrix.strings[i]);
+    }
+    free(matrix.strings);
+}
+
+
+//Teste da inserção das listas ligadas
+void testInsertMatrixIntoNode()
+{
+    LL_MATRICES list;
+    list.size = 0;
+    list.firstMatrix = NULL;
+    list.lastMatrix = NULL;
+
+    MATRIX_STRINGS matrix1;
+    matrix1.size = 1;
+    matrix1.strings = malloc(sizeof(char *));
+    matrix1.strings[0] = strdup("string1");
+
+    MATRIX_STRINGS matrix2;
+    matrix2.size = 1;
+    matrix2.strings = malloc(sizeof(char *));
+    matrix2.strings[0] = strdup("string2");
+
+    MATRIX_STRINGS matrix3;
+    matrix3.size = 1;
+    matrix3.strings = malloc(sizeof(char *));
+    matrix3.strings[0] = strdup("string3");
+
+    NODE_MATRIX node1;
+    node1.year = 2025;
+    node1.month = 1;
+    node1.day = 8;
+
+    NODE_MATRIX node2;
+    node2.year = 2024;
+    node2.month = 12;
+    node2.day = 25;
+
+    NODE_MATRIX node3;
+    node3.year = 2025;
+    node3.month = 1;
+    node3.day = 1;
+
+    insertMatrixIntoNode(matrix1, &node1, &list);
+    insertMatrixIntoNode(matrix2, &node2, &list);
+    insertMatrixIntoNode(matrix3, &node3, &list);
+
+    printNodeList(&list);
+
+    free(matrix1.strings[0]);
+    free(matrix1.strings);
+    free(matrix2.strings[0]);
+    free(matrix2.strings);
+    free(matrix3.strings[0]);
+    free(matrix3.strings);
 }

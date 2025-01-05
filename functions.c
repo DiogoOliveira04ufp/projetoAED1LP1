@@ -1,12 +1,14 @@
 #include "functions.h"
 #include <string.h>
 
-char resizeStringArray(char *string, int resize)
+char *resizeStringArray(char *string, int resize)
 {
     char *newString = realloc(string, resize);
     return newString;
 }
 
+//imprimir strings,
+//ciclo for para percorrer o array tod0 e imprimir cada elemento
 void printStrings(MATRIX_STRINGS matrix)
 {
     for (int i = 0; i < matrix.size; i++)
@@ -15,6 +17,8 @@ void printStrings(MATRIX_STRINGS matrix)
     }
 }
 
+//inserir strings na estrutura MATRIX_STRINGS
+//insere uma string no último elemento do array e incrementa a variável size
 void insertStringIntoMatrix(MATRIX_STRINGS *matrix, char str[])
 {
     char **strings_copy = realloc(matrix->strings, (matrix->size + 1) * sizeof(char *));
@@ -28,6 +32,8 @@ void insertStringIntoMatrix(MATRIX_STRINGS *matrix, char str[])
     }
 }
 
+//remover strings de uma MATRIX_STRINGS
+//recebe um índice, remove a string correspondente e passa os elementos a seguir para os seus lugares
 void removeStrings(MATRIX_STRINGS matrix, int index)
 {
     if (index > matrix.size)
@@ -49,6 +55,46 @@ void removeStrings(MATRIX_STRINGS matrix, int index)
     }
 }
 
+void readStringsFromFile(const char *filename, MATRIX_STRINGS *matrix)
+{
+    FILE *file = fopen(filename, "r");
+    if (file == NULL)
+    {
+        perror("Erro ao abrir o ficheiro");
+        return;
+    }
+
+    char buffer[1024];                                      // Assumindo que a linha não excede 1024 caracteres
+    if (fgets(buffer, sizeof(buffer), file))
+    {
+        char *token = strtok(buffer, " ");
+        while (token != NULL)
+        {
+            insertStringIntoMatrix(matrix, token);
+            token = strtok(NULL, " ");
+        }
+    }
+
+    fclose(file);
+}
+
+void writeStringsToFile(const char *filename, MATRIX_STRINGS matrix)
+{
+    FILE *file = fopen(filename, "w");
+    if (file == NULL) {
+        perror("Erro ao abrir o ficheiro");
+        return;
+    }
+
+    for (int i = 0; i < matrix.size; i++)
+    {
+        fprintf(file, "%s ", matrix.strings[i]);
+    }
+    fclose(file);
+    printf("Dados escritos no ficheiro: %s\n", filename);
+}
+
+//inserir uma matriz num nó, e depois numa lista ligada de nós
 void insertMatrixIntoNode(MATRIX_STRINGS matrix, NODE_MATRIX *node, LL_MATRICES *list)
 {
     node->lista_strings = matrix;
@@ -93,6 +139,18 @@ void insertMatrixIntoNode(MATRIX_STRINGS matrix, NODE_MATRIX *node, LL_MATRICES 
     }
 
     list->size++;
+}
+
+//acessória para os nós
+void printNodeList(LL_MATRICES *list)
+{
+    NODE_MATRIX *current = list->firstMatrix;
+    while (current != NULL)
+    {
+        printf("Date: %d-%02d-%02d\n", current->year, current->month, current->day);
+        printStrings(current->lista_strings);
+        current = current->nextNode;
+    }
 }
 
 /*

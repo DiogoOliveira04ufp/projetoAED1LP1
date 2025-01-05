@@ -3,6 +3,6 @@
 
 int main()
 {
-    testGermin();
+    testReadFromFile();
     return 0;
 }
