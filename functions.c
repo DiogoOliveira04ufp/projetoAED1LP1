@@ -51,35 +51,42 @@ void removeStrings(MATRIX_STRINGS matrix, int index)
         }
     }
 }
-void readStringsFromFile(const char *filename, MATRIX_STRINGS *matrix) {
+void readStringsFromFile(const char *filename, MATRIX_STRINGS *matrix)
+{
     FILE *file = fopen(filename, "r");
-    if (file == NULL) {
+    if (file == NULL)
+    {
         perror("Erro ao abrir o ficheiro");
         return;
     }
 
-    char buffer[256];
-    while (fgets(buffer, sizeof(buffer), file)) {
-        buffer[strcspn(buffer, "\n")] = '\0'; // Remove newline character
-        insertStringIntoMatrix(matrix, buffer);
+    char buffer[1024];                                      // Assumindo que a linha não excede 1024 caracteres
+    if (fgets(buffer, sizeof(buffer), file))
+    {
+        char *token = strtok(buffer, " ");
+        while (token != NULL)
+        {
+            insertStringIntoMatrix(matrix, token);
+            token = strtok(NULL, " ");
+        }
     }
 
     fclose(file);
 }
 
-void writeStringsToFile(const char *filename, MATRIX_STRINGS matrix) {
+
+void writeStringsToFile(const char *filename, MATRIX_STRINGS matrix)
+{
     FILE *file = fopen(filename, "w");
     if (file == NULL) {
         perror("Erro ao abrir o ficheiro");
         return;
     }
 
-    for (int i = 0; i < matrix.size; i++) {
-        fprintf(file, "%s\n", matrix.strings[i]);
-        printf("%s\n", matrix.strings[i]); // Imprime na consola
-
+    for (int i = 0; i < matrix.size; i++)
+    {
+        fprintf(file, "%s ", matrix.strings[i]);
     }
-
     fclose(file);
     printf("Dados escritos no ficheiro: %s\n", filename);
 }
@@ -106,5 +113,42 @@ void writeStringsToBinaryFile(const char *filename, MATRIX_STRINGS matrix) {
     }
 
     fclose(file);
-    printf("Dados escritos no ficheiro binário: %s\n", filename);
+    printf("Dados escritos no ficheiro binario: %s\n", filename);
+}
+void readStringsFromBinaryFile(const char *filename, MATRIX_STRINGS *matrix) {
+    FILE *file = fopen(filename, "rb");
+    if (file == NULL) {
+        perror("Erro ao abrir o ficheiro");
+        return;
+    }
+
+    while (1) {
+        size_t length;
+        if (fread(&length, sizeof(size_t), 1, file) != 1) {
+            if (feof(file)) break; // Fim do ficheiro
+            perror("Erro ao ler o tamanho da string do ficheiro");
+            fclose(file);
+            return;
+        }
+
+        char *str = malloc(length);
+        if (str == NULL) {
+            perror("Erro ao alocar memória para a string");
+            fclose(file);
+            return;
+        }
+
+        if (fread(str, sizeof(char), length, file) != length) {
+            perror("Erro ao ler a string do ficheiro");
+            free(str);
+            fclose(file);
+            return;
+        }
+
+        insertStringIntoMatrix(matrix, str);
+        free(str);
+    }
+
+    fclose(file);
+    printf("Dados lidos do ficheiro binario: %s\n", filename);
 }
