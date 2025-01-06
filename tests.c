@@ -42,7 +42,7 @@ void testRemove()
 
     printStrings(matrix);                            //imprimir todas as strings ({"claro", "aro", "faro", "pifaro", "pifa", "ar"})
     printf("---------------------------\n");
-    removeStrings(matrix, 5);                        //remover a ultima string
+    removeStrings(&matrix, 5);                        //remover a ultima string
     printStrings(matrix);                            //imprimir o novo array sem a ultima string ({"claro", "aro", "faro", "pifaro", "pifa"})
 
     for (int i = 0; i < matrix.size; i++)

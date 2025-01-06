@@ -34,25 +34,20 @@ void insertStringIntoMatrix(MATRIX_STRINGS *matrix, char str[])
 
 //remover strings de uma MATRIX_STRINGS
 //recebe um índice, remove a string correspondente e passa os elementos a seguir para os seus lugares
-void removeStrings(MATRIX_STRINGS matrix, int index)
+void removeStrings(MATRIX_STRINGS *matrix, int index)
 {
-    if (index > matrix.size)
+    if (index >= matrix->size)
     {
-        printf("string nao existe");
+        printf("string nao existe\n");
         return;
     }
-    for (int i = index; i < matrix.size; i++)
+    free(matrix->strings[index]);
+    for (int i = index; i < matrix->size - 1; i++)
     {
-        if (matrix.strings[i + 1] != '\0')
-        {
-            matrix.strings[i] = matrix.strings[i + 1];
-        }
-        else
-        {
-            matrix.strings[i] = '\0';
-            break;
-        }
+        matrix->strings[i] = matrix->strings[i + 1];
     }
+    matrix->size--;
+    matrix->strings = realloc(matrix->strings, matrix->size * sizeof(char *));
 }
 
 //ler strings escritas no ficheiro

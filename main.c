@@ -3,6 +3,6 @@
 
 int main()
 {
-    ordemt();
+    testRemove();
     return 0;
 }
