@@ -1,0 +1,32 @@
+\doxysection{germin.\+h}
+\hypertarget{germin_8h_source}{}\label{germin_8h_source}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//}}
+\DoxyCodeLine{00002\ \textcolor{comment}{//\ Created\ by\ Utilizador\ on\ 30/12/2024.}}
+\DoxyCodeLine{00003\ \textcolor{comment}{//}}
+\DoxyCodeLine{00004\ }
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#ifndef\ GERMIN\_H}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#define\ GERMIN\_H}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ <stdio.h>}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ <stdlib.h>}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ <string.h>}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ "{}functions.h"{}}\ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//para\ as\ matrizes}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ "{}kmp.h"{}}}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00014\ \textcolor{comment}{//\ Define\ uma\ estrutura\ para\ armazenar\ palavras}}
+\DoxyCodeLine{00015\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{00016\ \ \ \ \ \textcolor{keywordtype}{char}\ palavra[100];}
+\DoxyCodeLine{00017\ \}\ \mbox{\hyperlink{struct_palavra}{Palavra}};}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00023\ \textcolor{keywordtype}{void}\ germin(MATRIX\_STRINGS\ *matrix);}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00031\ \textcolor{keywordtype}{int}\ canGerminate(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *a,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *b);}
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00041\ \textcolor{keywordtype}{void}\ findGerminations(MATRIX\_STRINGS\ *matrix,\ \textcolor{keywordtype}{int}\ index,\ \textcolor{keywordtype}{char}\ **currentPath,\ \textcolor{keywordtype}{int}\ pathSize,\ \textcolor{keywordtype}{int}\ *visited);}
+\DoxyCodeLine{00042\ }
+\DoxyCodeLine{00048\ \textcolor{keywordtype}{void}\ printPath(\textcolor{keywordtype}{char}\ **currentPath,\ \textcolor{keywordtype}{int}\ pathSize);}
+\DoxyCodeLine{00049\ }
+\DoxyCodeLine{00050\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//GERMIN\_H}}
+
+\end{DoxyCode}

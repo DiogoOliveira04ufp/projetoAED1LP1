@@ -1,0 +1,27 @@
+\doxysection{kmp.\+h}
+\hypertarget{kmp_8h_source}{}\label{kmp_8h_source}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ KMP\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ KMP\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <stdio.h>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <stdlib.h>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <string.h>}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ "{}functions.h"{}}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{00010\ \ \ \ \ \textcolor{keywordtype}{char}\ *pat;}
+\DoxyCodeLine{00011\ \ \ \ \ \textcolor{keywordtype}{int}\ **dfa;}
+\DoxyCodeLine{00012\ \ \ \ \ \textcolor{keywordtype}{int}\ M;}
+\DoxyCodeLine{00013\ \}\ \mbox{\hyperlink{struct_k_m_p}{KMP}};}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00020\ \mbox{\hyperlink{struct_k_m_p}{KMP}}*\ KMP\_init(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *pat);}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00028\ \textcolor{keywordtype}{int}\ KMP\_search(\mbox{\hyperlink{struct_k_m_p}{KMP}}\ *kmp,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *txt);}
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00034\ \textcolor{keywordtype}{void}\ KMP\_free(\mbox{\hyperlink{struct_k_m_p}{KMP}}\ *kmp);}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00037\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//KMP\_H}}
+
+\end{DoxyCode}

@@ -1,9 +1,5 @@
 #include "tests.h"
 
-/**
- * Teste para as funções inserir e imprimir
- * Utiliza o exemplo no protocolo, tal como maior parte destes testes
- */
 void testInsertPrint()
 {
     MATRIX_STRINGS matrix;
@@ -27,9 +23,6 @@ void testInsertPrint()
     free(conjunto);
 }
 
-/**
- * Teste para a função remover
- */
 void testRemove()
 {
     MATRIX_STRINGS matrix;
@@ -57,9 +50,6 @@ void testRemove()
     free(conjunto);
 }
 
-/**
- * Teste para a ordenação por ordem alfabética
- */
 void testLSDsort()
 {
     MATRIX_STRINGS matrix;
@@ -98,9 +88,6 @@ void testLSDsort()
     free(str.len);
 }
 
-/**
- * Teste para a pesquisa de strings, importante para a funcionalidade principal
- */
 void testKMP()
 {
     const char *pat = "ABABAC";
@@ -118,9 +105,6 @@ void testKMP()
     KMP_free(kmp);
 }
 
-/**
- * Teste da funcionalidade principal, a germinação de strings
- */
 void testGermin()
 {
     MATRIX_STRINGS matrix;
@@ -148,10 +132,6 @@ void testGermin()
     free(matrix.strings);
 }
 
-/**
- * Testar a escrita no ficheiro; normal e binário
- * inicializa uma matriz e escreve-a no ficheiro pela função writeStringsToFile()
- */
 void testWriteToFile()
 {
     MATRIX_STRINGS matrix;
@@ -198,10 +178,6 @@ void testWriteToFile()
     printf("Verifique o ficheiro!\n");
 }
 
-/**
- * Teste para ler as strings no ficheiro
- * Utiliza o teste anterior para escrever strings no ficheiro, depois lÊ-as e imprime-as na consola
- */
 void testReadFromFile()
 {
     //escrever strings no ficheiro para ler
@@ -229,9 +205,6 @@ void testReadFromFile()
     free(matrix.strings);
 }
 
-/**
- * Teste para a leitura do ficheiro binário
- */
 void testReadFromBinaryFile()
 {
     // Escrever strings no ficheiro binário para ler
@@ -259,7 +232,6 @@ void testReadFromBinaryFile()
     free(matrix.strings);
 }
 
-//Teste da ordenação por tamanhos
 void ordemt()
 {
     MATRIX_STRINGS matrix;
@@ -289,9 +261,6 @@ void ordemt()
     free(matrix.strings);
 }
 
-/**
- * Teste da inserção das listas ligadas
- */
 void testInsertNodeIntoList()
 {
     LL_MATRICES list;
@@ -333,6 +302,8 @@ void testInsertNodeIntoList()
     insertNodeIntoList(matrix2, &node2, &list);
     insertNodeIntoList(matrix3, &node3, &list);
 
+    insertNodeIntoList(matrix2, &node2, &list);
+
     printNodeList(&list);
 
     free(matrix1.strings[0]);
@@ -343,9 +314,6 @@ void testInsertNodeIntoList()
     free(matrix3.strings);
 }
 
-/**
- * Teste para inserir nós numa dada posição da lista ligada
- */
 void testInsertNodeIntoPosition()
 {
     LL_MATRICES list;

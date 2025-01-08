@@ -7,12 +7,6 @@
 int totalSequences = 0;
 int maxSequenceLength = 0;
 
-/**
- * Função auxiliar para verificar se a string 'a' cabe dentro da string 'b'
- * @param a primeira string
- * @param b segunda string
- * @return 1 se a string a é um prefixo ou sufixo da string b || 0 caso contrário
- */
 int canGerminate(const char *a, const char *b)
 {
     int lenA = strlen(a);
@@ -23,11 +17,6 @@ int canGerminate(const char *a, const char *b)
     return (strncmp(a, b, lenA) == 0 || strncmp(a, b + lenB - lenA, lenA) == 0);
 }
 
-/**
- * Função para imprimir o caminho na ordem correta
- * @param currentPath  caminho atual da sequência de germinação
- * @param pathSize tamanho atual do caminho
- */
 void printPath(char **currentPath, int pathSize)
 {
     printf("Sequencia: ");
@@ -44,14 +33,6 @@ void printPath(char **currentPath, int pathSize)
     }
 }
 
-/**
- * Função recursiva para encontrar todas as sequências de germinação
- * @param matrix array de strings a examinar
- * @param index índice da string específica
- * @param currentPath caminho atual da sequência de germinação
- * @param pathSize tamanho atual do caminho
- * @param visited array que marca quais strings já foram visitadas
- */
 void findGerminations(MATRIX_STRINGS *matrix, int index, char **currentPath, int pathSize, int *visited)
 {
     currentPath[pathSize] = matrix->strings[index];
@@ -79,10 +60,6 @@ void findGerminations(MATRIX_STRINGS *matrix, int index, char **currentPath, int
     visited[index] = 0;
 }
 
-/**
- * Função principal para encontrar todas as sequências de germinação
- * @param matrix array de strings a examinar
- */
 void germin(MATRIX_STRINGS *matrix)
 {
     char **currentPath = malloc(sizeof(char *) * matrix->size);

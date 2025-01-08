@@ -1,9 +1,5 @@
 #include "ordem.h"
 
-/**
- * Ordena um array de strings utilizando bubble sort
- * @param matrix - array de strings a ordenar
- */
 void ordenar_strings(MATRIX_STRINGS *matrix)
 {
     for (int i = 0; i < matrix->size - 1; i++)

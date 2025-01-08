@@ -1,0 +1,57 @@
+\doxysection{functions.\+h}
+\hypertarget{functions_8h_source}{}\label{functions_8h_source}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ FUNCTIONS\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ FUNCTIONS\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <stdio.h>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <stdlib.h>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <string.h>}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structmatrix_strings}{matrixStrings}}\{}
+\DoxyCodeLine{00009\ \ \ \ \ \textcolor{keywordtype}{char}\ **strings;\ \ \ \ \ \ \ \ \ \textcolor{comment}{//lista\ de\ strings}}
+\DoxyCodeLine{00010\ \ \ \ \ \textcolor{keywordtype}{int}\ size;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//número\ de\ strings}}
+\DoxyCodeLine{00011\ \}\ MATRIX\_STRINGS;}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structnode_matrix}{nodeMatrix}}\ \{}
+\DoxyCodeLine{00014\ \ \ \ \ MATRIX\_STRINGS\ lista\_strings;}
+\DoxyCodeLine{00015\ \ \ \ \ \textcolor{keywordtype}{int}\ year,\ month,\ day;}
+\DoxyCodeLine{00016\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structnode_matrix}{nodeMatrix}}\ *\ nextNode,\ *\ prevNode;}
+\DoxyCodeLine{00017\ \}\ NODE\_MATRIX;}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structll_matrices}{llMatrices}}\ \{}
+\DoxyCodeLine{00020\ \ \ \ \ \textcolor{keywordtype}{int}\ size;}
+\DoxyCodeLine{00021\ \ \ \ \ NODE\_MATRIX\ *firstMatrix;}
+\DoxyCodeLine{00022\ \ \ \ \ NODE\_MATRIX\ *lastMatrix;}
+\DoxyCodeLine{00023\ \}\ LL\_MATRICES;}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00025\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structadll_matrices}{adllMatrices}}\ \{}
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{keywordtype}{int}\ size;}
+\DoxyCodeLine{00027\ \ \ \ \ LL\_MATRICES\ *lists;}
+\DoxyCodeLine{00028\ \}\ AD\_LL\_MATRICES;}
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00036\ \textcolor{keywordtype}{char}\ *resizeStringArray(\textcolor{keywordtype}{char}\ *\textcolor{keywordtype}{string},\ \textcolor{keywordtype}{int}\ resize);}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00043\ \textcolor{keywordtype}{void}\ printStrings(MATRIX\_STRINGS\ matrix);}
+\DoxyCodeLine{00044\ }
+\DoxyCodeLine{00051\ \textcolor{keywordtype}{void}\ insertStringIntoMatrix(MATRIX\_STRINGS\ *matrix,\ \textcolor{keywordtype}{char}\ str[]);}
+\DoxyCodeLine{00052\ }
+\DoxyCodeLine{00059\ \textcolor{keywordtype}{void}\ removeStrings(MATRIX\_STRINGS\ *matrix,\ \textcolor{keywordtype}{int}\ index);}
+\DoxyCodeLine{00060\ }
+\DoxyCodeLine{00066\ \textcolor{keywordtype}{void}\ readStringsFromFile(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *filename,\ MATRIX\_STRINGS\ *matrix);}
+\DoxyCodeLine{00067\ }
+\DoxyCodeLine{00073\ \textcolor{keywordtype}{void}\ writeStringsToFile(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *filename,\ MATRIX\_STRINGS\ matrix);}
+\DoxyCodeLine{00074\ }
+\DoxyCodeLine{00080\ \textcolor{keywordtype}{void}\ writeStringsToBinaryFile(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *filename,\ MATRIX\_STRINGS\ matrix);}
+\DoxyCodeLine{00081\ }
+\DoxyCodeLine{00087\ \textcolor{keywordtype}{void}\ readStringsFromBinaryFile(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *filename,\ MATRIX\_STRINGS\ *matrix);}
+\DoxyCodeLine{00088\ }
+\DoxyCodeLine{00095\ \textcolor{keywordtype}{void}\ insertNodeIntoList(MATRIX\_STRINGS\ matrix,\ NODE\_MATRIX\ *node,\ LL\_MATRICES\ *list);}
+\DoxyCodeLine{00096\ }
+\DoxyCodeLine{00102\ \textcolor{keywordtype}{void}\ printNodeList(LL\_MATRICES\ *list);}
+\DoxyCodeLine{00103\ }
+\DoxyCodeLine{00110\ \textcolor{keywordtype}{void}\ insertNodeIntoPosition(NODE\_MATRIX\ *node,\ LL\_MATRICES\ *list,\ \textcolor{keywordtype}{int}\ position);}
+\DoxyCodeLine{00111\ }
+\DoxyCodeLine{00112\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ FUNCTIONS\_H}}
+
+\end{DoxyCode}

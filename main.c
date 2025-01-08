@@ -8,6 +8,8 @@ int main()
     //testKMP();
     //testGermin();
     //testLSDsort();
-    ordemt();
+    //ordemt();
+    //testInsertNodeIntoList();
+    testWriteToFile();
     return 0;
 }

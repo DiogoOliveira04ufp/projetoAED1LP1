@@ -1,0 +1,21 @@
+var NAVTREEINDEX0 =
+{
+"annotated.html":[0,0],
+"classes.html":[0,1],
+"files.html":[1,0],
+"functions_8h_source.html":[1,0,0],
+"germin_8h_source.html":[1,0,1],
+"index.html":[],
+"kmp_8h_source.html":[1,0,2],
+"lsd_8h_source.html":[1,0,3],
+"ordem_8h_source.html":[1,0,4],
+"pages.html":[],
+"struct_k_m_p.html":[0,0,1],
+"struct_palavra.html":[0,0,5],
+"struct_string_elements_array.html":[0,0,6],
+"structadll_matrices.html":[0,0,0],
+"structll_matrices.html":[0,0,2],
+"structmatrix_strings.html":[0,0,3],
+"structnode_matrix.html":[0,0,4],
+"tests_8h_source.html":[1,0,5]
+};

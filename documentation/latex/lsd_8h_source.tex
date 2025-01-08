@@ -1,0 +1,29 @@
+\doxysection{lsd.\+h}
+\hypertarget{lsd_8h_source}{}\label{lsd_8h_source}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ LSD\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ LSD\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <stdio.h>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <stdlib.h>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <string.h>}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{00009\ \ \ \ \ \textcolor{keywordtype}{char}\ **\ str;\ \ \textcolor{comment}{//\ array\ of\ strings}}
+\DoxyCodeLine{00010\ \ \ \ \ \textcolor{keywordtype}{int}\ *\ len;\ \ \ \ \textcolor{comment}{//\ array\ of\ string\ lengths}}
+\DoxyCodeLine{00011\ \ \ \ \ \textcolor{keywordtype}{int}\ N;\ \ \ \ \ \ \ \ \textcolor{comment}{//\ number\ of\ strings\ (size\ of\ array\ of\ strings)}}
+\DoxyCodeLine{00012\ \}\ \mbox{\hyperlink{struct_string_elements_array}{StringElementsArray}};}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00020\ \textcolor{keywordtype}{void}\ lsd\_sort\_stringElements(\mbox{\hyperlink{struct_string_elements_array}{StringElementsArray}}\ *a,\ \textcolor{keywordtype}{int}\ swidth,\ \textcolor{keywordtype}{int}\ radix);}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00027\ \textcolor{keywordtype}{void}\ createStringElementsArray(\mbox{\hyperlink{struct_string_elements_array}{StringElementsArray}}\ *\ si,\ \textcolor{keywordtype}{int}\ N);}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00035\ \textcolor{keywordtype}{void}\ createStringElementsArrayAndFill(\mbox{\hyperlink{struct_string_elements_array}{StringElementsArray}}\ *\ si,\ \textcolor{keywordtype}{int}\ N,\ \textcolor{keywordtype}{char}\ **\ strings);}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00042\ \textcolor{keywordtype}{int}\ *newIntArray(\textcolor{keywordtype}{int}\ N);}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00048\ \textcolor{keywordtype}{void}\ freeStringElementsArray(\mbox{\hyperlink{struct_string_elements_array}{StringElementsArray}}\ *\ si);}
+\DoxyCodeLine{00049\ }
+\DoxyCodeLine{00050\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//LSD\_H}}
+
+\end{DoxyCode}
