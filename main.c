@@ -3,6 +3,11 @@
 
 int main()
 {
-    testRemove();
+    //testInsertPrint();
+    //testRemove();
+    //testKMP();
+    //testGermin();
+    //testLSDsort();
+    ordemt();
     return 0;
 }

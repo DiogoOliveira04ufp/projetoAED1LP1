@@ -1,7 +1,10 @@
 #include "kmp.h"
 
-// Função para inicializar a estrutura KMP
-// Passa strings para a estrutura KMP
+/**
+ * 
+ * @param pat - padrão a descobrir
+ * @return - estrutura preparada para aplicar o algoritmo
+ */
 KMP* KMP_init(const char *pat)
 {
     KMP *kmp = (KMP *)malloc(sizeof(KMP));
@@ -27,7 +30,12 @@ KMP* KMP_init(const char *pat)
     return kmp;
 }
 
-// Função para procurar o padrão num texto
+/**
+ * Função para procurar o padrão num texto
+ * @param kmp estrutura do padrão a encontrar
+ * @param txt string onde se vai procurar o padrão
+ * @return índice onde o padrão foi encontrado
+ */
 int KMP_search(KMP *kmp, const char *txt)
 {
     int i, j, N = strlen(txt);
@@ -39,7 +47,10 @@ int KMP_search(KMP *kmp, const char *txt)
     else return N;
 }
 
-// Função para libertar a memória alocada pela estrutura KMP
+/**
+ * Função para libertar a memória alocada pela estrutura KMP
+ * @param kmp estrutura do padrão para libertar
+ */
 void KMP_free(KMP *kmp)
 {
     for (int i = 0; i < 256; i++)

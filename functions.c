@@ -1,14 +1,23 @@
 #include "functions.h"
 #include <string.h>
 
+/**
+ * 
+ * @param string string a redimensionar
+ * @param resize novo tamanho
+ * @return string redimensionada
+ */
 char *resizeStringArray(char *string, int resize)
 {
     char *newString = realloc(string, resize);
     return newString;
 }
 
-//imprimir strings,
-//ciclo for para percorrer o array tod0 e imprimir cada elemento
+/**
+ * imrpimir strings
+ * ciclo for para percorrer o array tod0 e imprimir cada elemento
+ * @param matrix  array de strings a imprimir
+ */
 void printStrings(MATRIX_STRINGS matrix)
 {
     for (int i = 0; i < matrix.size; i++)
@@ -17,8 +26,12 @@ void printStrings(MATRIX_STRINGS matrix)
     }
 }
 
-//inserir strings na estrutura MATRIX_STRINGS
-//insere uma string no último elemento do array e incrementa a variável size
+/**
+ * inserir strings na estrutura MATRIX_STRINGS
+ * insere uma string no último elemento do array e incrementa a variável size
+ * @param matrix array de strings original
+ * @param str string a inserir no array
+ */
 void insertStringIntoMatrix(MATRIX_STRINGS *matrix, char str[])
 {
     char **strings_copy = realloc(matrix->strings, (matrix->size + 1) * sizeof(char *));
@@ -32,8 +45,12 @@ void insertStringIntoMatrix(MATRIX_STRINGS *matrix, char str[])
     }
 }
 
-//remover strings de uma MATRIX_STRINGS
-//recebe um índice, remove a string correspondente e passa os elementos a seguir para os seus lugares
+/**
+ * remover strings de uma MATRIX_STRINGS
+ * recebe um índice, remove a string corresondente e passa os elementos a seguir para os seus lugares
+ * @param matrix array de strings original
+ * @param index índice da string a remover
+ */
 void removeStrings(MATRIX_STRINGS *matrix, int index)
 {
     if (index >= matrix->size)
@@ -50,7 +67,11 @@ void removeStrings(MATRIX_STRINGS *matrix, int index)
     matrix->strings = realloc(matrix->strings, matrix->size * sizeof(char *));
 }
 
-//ler strings escritas no ficheiro
+/**
+ * ler strings escritas no ficheiro
+ * @param filename nome do ficheiro
+ * @param matrix array de strings para escrever as strings escritas no ficheiro
+ */
 void readStringsFromFile(const char *filename, MATRIX_STRINGS *matrix)
 {
     FILE *file = fopen(filename, "r");
@@ -74,7 +95,11 @@ void readStringsFromFile(const char *filename, MATRIX_STRINGS *matrix)
     fclose(file);
 }
 
-//escrever strings no ficheiro
+/**
+ * escrever strings no ficheiro
+ * @param filename nome do ficheiro
+ * @param matrix array de strings para escrever no ficheiro
+ */
 void writeStringsToFile(const char *filename, MATRIX_STRINGS matrix)
 {
     FILE *file = fopen(filename, "w");
@@ -91,7 +116,11 @@ void writeStringsToFile(const char *filename, MATRIX_STRINGS matrix)
     printf("Dados escritos no ficheiro: %s\n", filename);
 }
 
-//escrever strings no ficheiro em binário
+/**
+ * escrever strings no ficheiro em binário
+ * @param filename nome do ficheiro
+ * @param matrix array de strings para escrever no ficheiro
+ */
 void writeStringsToBinaryFile(const char *filename, MATRIX_STRINGS matrix)
 {
     FILE *file = fopen(filename, "wb");
@@ -119,7 +148,11 @@ void writeStringsToBinaryFile(const char *filename, MATRIX_STRINGS matrix)
     printf("Dados escritos no ficheiro binario: %s\n", filename);
 }
 
-//ler strings em formato binário a partir do ficheiro
+/**
+ * ler strings em formato binário
+ * @param filename nome do ficheiro
+ * @param matrix array de strings para escrever as strings lidas
+ */
 void readStringsFromBinaryFile(const char *filename, MATRIX_STRINGS *matrix)
 {
     FILE *file = fopen(filename, "rb");
@@ -159,7 +192,12 @@ void readStringsFromBinaryFile(const char *filename, MATRIX_STRINGS *matrix)
     printf("Dados lidos do ficheiro binario: %s\n", filename);
 }
 
-//inserir uma matriz num nó, e depois numa lista ligada de nós
+/**
+ * Inserir uma matriz num nó, e depois numa lista ligada de nós
+ * @param matrix array de strings
+ * @param node nó de estruturas MATRIX_STRINGS
+ * @param list lista de nós
+ */
 void insertNodeIntoList(MATRIX_STRINGS matrix, NODE_MATRIX *node, LL_MATRICES *list)
 {
     node->lista_strings = matrix;
@@ -206,7 +244,11 @@ void insertNodeIntoList(MATRIX_STRINGS matrix, NODE_MATRIX *node, LL_MATRICES *l
     list->size++;
 }
 
-//acessória para os nós
+/**
+ * imprimir nós
+ * acessória para os nós
+ * @param list lista de nós a imprimir
+ */
 void printNodeList(LL_MATRICES *list)
 {
     NODE_MATRIX *current = list->firstMatrix;
@@ -218,7 +260,12 @@ void printNodeList(LL_MATRICES *list)
     }
 }
 
-//inserir um nó numa dada posição na lista ligada
+/**
+ * inserir um nó numa dada posição na lista ligada
+ * @param node nó a inserir
+ * @param list lista onde inserir
+ * @param position posição da lista onde inserir
+ */
 void insertNodeIntoPosition(NODE_MATRIX *node, LL_MATRICES *list, int position)
 {
     if (position < 0 || position > list->size)
@@ -266,17 +313,3 @@ void insertNodeIntoPosition(NODE_MATRIX *node, LL_MATRICES *list, int position)
 
     list->size++;
 }
-
-/*
-typedef struct nodeMatrix {
-    MATRIX_STRINGS lista_strings;
-    int year, month, day;
-    struct nodeMatrix * nextNode, * prevNode;
-} NODE_MATRIX;
-
-typedef struct llMatrices {
-    int size;
-    NODE_MATRIX *firstMatrix;
-    NODE_MATRIX *lastMatrix;
-} LL_MATRICES;
- */

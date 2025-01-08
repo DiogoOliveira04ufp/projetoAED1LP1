@@ -1,6 +1,9 @@
 #include "tests.h"
 
-//Teste para as funções inserir e imprimir, utiliza o exemplo no protocolo tal como maior parte destes testes
+/**
+ * Teste para as funções inserir e imprimir
+ * Utiliza o exemplo no protocolo, tal como maior parte destes testes
+ */
 void testInsertPrint()
 {
     MATRIX_STRINGS matrix;
@@ -24,7 +27,9 @@ void testInsertPrint()
     free(conjunto);
 }
 
-//Teste para a função remover
+/**
+ * Teste para a função remover
+ */
 void testRemove()
 {
     MATRIX_STRINGS matrix;
@@ -42,7 +47,7 @@ void testRemove()
 
     printStrings(matrix);                            //imprimir todas as strings ({"claro", "aro", "faro", "pifaro", "pifa", "ar"})
     printf("---------------------------\n");
-    removeStrings(&matrix, 5);                        //remover a ultima string
+    removeStrings(&matrix, 2);                        //remover a ultima string
     printStrings(matrix);                            //imprimir o novo array sem a ultima string ({"claro", "aro", "faro", "pifaro", "pifa"})
 
     for (int i = 0; i < matrix.size; i++)
@@ -52,7 +57,9 @@ void testRemove()
     free(conjunto);
 }
 
-//Teste para a ordenação por ordem alfabética
+/**
+ * Teste para a ordenação por ordem alfabética
+ */
 void testLSDsort()
 {
     MATRIX_STRINGS matrix;
@@ -91,11 +98,13 @@ void testLSDsort()
     free(str.len);
 }
 
-//Teste para a pesquisa de strings, importante para a funcionalidade principal
+/**
+ * Teste para a pesquisa de strings, importante para a funcionalidade principal
+ */
 void testKMP()
 {
     const char *pat = "ABABAC";
-    const char *txt = "ABABABABABAC";
+    const char *txt = "ABABABACBABAC";
 
     KMP *kmp = KMP_init(pat);
     int pos = KMP_search(kmp, txt);
@@ -109,7 +118,9 @@ void testKMP()
     KMP_free(kmp);
 }
 
-//Teste da funcionalidade principal, a germinação de strings
+/**
+ * Teste da funcionalidade principal, a germinação de strings
+ */
 void testGermin()
 {
     MATRIX_STRINGS matrix;
@@ -137,8 +148,10 @@ void testGermin()
     free(matrix.strings);
 }
 
-//Testar a escrita no ficheiro; normal e binário
-//inicializa uma matriz e escreve-a no ficheiro pela função writeStringsToFile()
+/**
+ * Testar a escrita no ficheiro; normal e binário
+ * inicializa uma matriz e escreve-a no ficheiro pela função writeStringsToFile()
+ */
 void testWriteToFile()
 {
     MATRIX_STRINGS matrix;
@@ -175,7 +188,7 @@ void testWriteToFile()
     matrix.size = size;
 
     writeStringsToFile("C:/Users/Utilizador/CLionProjects/projetoAED1LP1/texton.txt", matrix);
-    writeStringsToBinaryFile("C:/Users/joaop/OneDrive/Ambiente de Trabalho/projetoAED1LP1-main/textob.txt", matrix);
+    writeStringsToBinaryFile("C:/Users/Utilizador/CLionProjects/projetoAED1LP1/textob.txt", matrix);
 
     for (int i = 0; i < size; i++)
     {
@@ -185,8 +198,10 @@ void testWriteToFile()
     printf("Verifique o ficheiro!\n");
 }
 
-//Teste para ler as strings no ficheiro
-//Utiliza o teste anterior para escrever strings no ficheiro, depois lê-as e imprime-as na consola
+/**
+ * Teste para ler as strings no ficheiro
+ * Utiliza o teste anterior para escrever strings no ficheiro, depois lÊ-as e imprime-as na consola
+ */
 void testReadFromFile()
 {
     //escrever strings no ficheiro para ler
@@ -214,7 +229,9 @@ void testReadFromFile()
     free(matrix.strings);
 }
 
-
+/**
+ * Teste para a leitura do ficheiro binário
+ */
 void testReadFromBinaryFile()
 {
     // Escrever strings no ficheiro binário para ler
@@ -272,7 +289,9 @@ void ordemt()
     free(matrix.strings);
 }
 
-//Teste da inserção das listas ligadas
+/**
+ * Teste da inserção das listas ligadas
+ */
 void testInsertNodeIntoList()
 {
     LL_MATRICES list;
@@ -324,7 +343,9 @@ void testInsertNodeIntoList()
     free(matrix3.strings);
 }
 
-//Teste para inserir nós numa dada posição da lista ligada
+/**
+ * Teste para inserir nós numa dada posição da lista ligada
+ */
 void testInsertNodeIntoPosition()
 {
     LL_MATRICES list;
